@@ -45,7 +45,7 @@ client.on('messageCreate', (message) => {
     }
   }
 
-  if (command === 'p') {
+  if ((command === 'p') | (command === 'play')) {
     const voiceChannel = message.member?.voice?.channel; //加入發文者在的語音伺服器
     if (voiceChannel) {
       //判斷是否在語音頻道
@@ -64,12 +64,12 @@ client.on('messageCreate', (message) => {
     }
   }
 
-  if (command === 'l') {
+  if ((command === 'l') | (command === 'leave')) {
     distube.voices.get(message)?.leave();
     message.channel.send(':wave: 離開語音');
   }
 
-  if (command === 's') distube.skip(message);
+  if ((command === 's') | (command === 'skip')) distube.skip(message);
 
   if ((command === 'queue') | (command === 'q')) {
     const queue = distube.getQueue(message);
